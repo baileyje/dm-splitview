@@ -5,22 +5,16 @@
 
 
 - (void)viewDidLoad {
-    NSLog(@"DVC: Will Appear");
     self.dmSplitViewController.delegate = self;
     self.navigationItem.title = @"Detail Controller";
 }
 
--(void)splitViewControllerWillHideMaster:(DMSplitViewController*)splitViewController {
-    NSLog(@"DVC: Will Hide");
-    NSLog(@"Hiding....");
-    UIBarButtonItem* toggle = splitViewController.barButtonItem;
-    toggle.title = @"BOOM";
-    self.navigationItem.leftBarButtonItem = toggle;
+-(void)splitViewControllerWillHideMaster:(DMSplitViewController*)splitViewController withBarButtonItem:(UIBarButtonItem*)barButtonItem {
+    barButtonItem.title = @"BOOM";
+    self.navigationItem.leftBarButtonItem = barButtonItem;
 }
 
 -(void)splitViewControllerWillShowMaster:(DMSplitViewController*)splitViewController {
-    NSLog(@"DVC: Will Show");
-    NSLog(@"Showing....");
     self.navigationItem.leftBarButtonItem = nil;
 }
 

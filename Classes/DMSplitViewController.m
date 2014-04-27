@@ -22,14 +22,8 @@
     id<DMSplitViewControllerDelegate> delegate;
 }
 
-- (CGSize)sizeForOrientation:(UIInterfaceOrientation)orientation {
-    CGFloat width = self.view.bounds.size.width;
-    CGFloat height = self.view.bounds.size.height;
-    return CGSizeMake(width, height);
-}
-
 - (CGRect)masterFrameFor:(UIInterfaceOrientation)orientation {
-    CGSize fullView = [self sizeForOrientation:orientation];
+    CGSize fullView = self.view.bounds.size;
     if(UIInterfaceOrientationIsLandscape(orientation)) {
         return CGRectMake(0, 0, DM_SPLITVIEW_MASTER_WIDTH, fullView.height);
     } else {
@@ -39,8 +33,7 @@
 }
 
 - (CGRect)detailFrameFor:(UIInterfaceOrientation)orientation {
-    CGSize fullView = [self sizeForOrientation:orientation];
-    NSLog(@"Full: %@", NSStringFromCGSize(fullView));
+    CGSize fullView = self.view.bounds.size;
     if(UIInterfaceOrientationIsLandscape(orientation)) {
         return CGRectMake(DM_SPLITVIEW_MASTER_WIDTH + 1, 0, fullView.width - DM_SPLITVIEW_MASTER_WIDTH - 1, fullView.height);
     } else {
@@ -49,7 +42,7 @@
 }
 
 - (CGRect)dividerFrameFor:(UIInterfaceOrientation)orientation {
-    CGSize fullView = [self sizeForOrientation:orientation];
+    CGSize fullView = self.view.bounds.size;
     if(UIInterfaceOrientationIsLandscape(orientation)) {
         return CGRectMake(DM_SPLITVIEW_MASTER_WIDTH, 0, DM_SPLITVIEW_DIVIDER_WIDTH, fullView.height);
     } else {
@@ -61,19 +54,17 @@
 - (void)showMaster {
     if(masterVisible) return;
     masterVisible = YES;
-//    [self.masterController viewWillAppear:YES];
     [self.view bringSubviewToFront:self.masterContainer];
     [self.view bringSubviewToFront:self.dividerView];
     [self.detailContainer addGestureRecognizer:self.detailTapRecognizer];
     [self.view removeGestureRecognizer:self.leftEdgeDetector];
-    [self.view addGestureRecognizer:self.masterCloseRecognizer];
+    [self.detailContainer addGestureRecognizer:self.masterCloseRecognizer];
     [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionBeginFromCurrentState
          animations:^{
              self.masterContainer.frame = [self masterFrameFor:self.interfaceOrientation];
              self.dividerView.frame = [self dividerFrameFor:self.interfaceOrientation];
          }
          completion:^(BOOL finished) {
-//             [self.masterController viewDidAppear:YES];
              [self.view setNeedsLayout];
 
          }];
@@ -83,7 +74,7 @@
     masterVisible = NO;
     [self.detailContainer removeGestureRecognizer:self.detailTapRecognizer];
     [self.view addGestureRecognizer:self.leftEdgeDetector];
-    [self.view removeGestureRecognizer:self.masterCloseRecognizer];
+    [self.detailContainer removeGestureRecognizer:self.masterCloseRecognizer];
     [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionBeginFromCurrentState
          animations:^{
              self.masterContainer.frame = [self masterFrameFor:self.interfaceOrientation];
@@ -100,7 +91,7 @@
     if(UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
         [delegate splitViewControllerWillShowMaster:self];
     } else {
-        [delegate splitViewControllerWillHideMaster:self];
+        [delegate splitViewControllerWillHideMaster:self withBarButtonItem:self.barButtonItem];
     }
 }
 
@@ -131,7 +122,6 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender {
-    NSLog(@"SVC: Prepare Segue");
     if ([segue.identifier isEqualToString:DM_SPLITVIEW_EMBED_MASTER]) {
         self.masterController = segue.destinationViewController;
     } else if ([segue.identifier isEqualToString:DM_SPLITVIEW_EMBED_DETAIL]) {
@@ -141,9 +131,7 @@
 
 - (void)willRotate:(NSNotification*)notification {
     if (![self isViewLoaded] || notification == nil) { return; }
-
     UIInterfaceOrientation orientation = [[notification.userInfo valueForKey:UIApplicationStatusBarOrientationUserInfoKey] intValue];
-    NSLog(@"SVC: Will Rotate: %d", orientation);
     if (UIInterfaceOrientationIsLandscape(orientation)) {
         [self.detailContainer removeGestureRecognizer:self.detailTapRecognizer];
         [self.view removeGestureRecognizer:self.leftEdgeDetector];
