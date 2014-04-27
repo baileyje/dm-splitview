@@ -9,9 +9,8 @@
 
 @interface DMSplitViewController()
 @property (nonatomic, strong) UIView* dividerView;
+@property (nonatomic, strong) UIView* detailOverlay;
 @property (nonatomic, strong) UIScreenEdgePanGestureRecognizer* leftEdgeDetector;
-@property (nonatomic, strong) UISwipeGestureRecognizer* masterCloseRecognizer;
-@property (nonatomic, strong) UITapGestureRecognizer* detailTapRecognizer;
 @property (nonatomic, strong) UIViewController* masterController;
 @property (nonatomic, strong) UIViewController* detailController;
 @property (nonatomic, strong) UIBarButtonItem* barButtonItem;
@@ -56,9 +55,9 @@
     masterVisible = YES;
     [self.view bringSubviewToFront:self.masterContainer];
     [self.view bringSubviewToFront:self.dividerView];
-    [self.detailContainer addGestureRecognizer:self.detailTapRecognizer];
     [self.view removeGestureRecognizer:self.leftEdgeDetector];
-    [self.detailContainer addGestureRecognizer:self.masterCloseRecognizer];
+    [self.view insertSubview:self.detailOverlay belowSubview:self.masterContainer];
+    self.detailOverlay.frame = [self detailFrameFor:self.interfaceOrientation];
     [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionBeginFromCurrentState
          animations:^{
              self.masterContainer.frame = [self masterFrameFor:self.interfaceOrientation];
@@ -72,9 +71,8 @@
 
 - (void)hideMaster {
     masterVisible = NO;
-    [self.detailContainer removeGestureRecognizer:self.detailTapRecognizer];
     [self.view addGestureRecognizer:self.leftEdgeDetector];
-    [self.detailContainer removeGestureRecognizer:self.masterCloseRecognizer];
+    [self.detailOverlay removeFromSuperview];
     [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionBeginFromCurrentState
          animations:^{
              self.masterContainer.frame = [self masterFrameFor:self.interfaceOrientation];
@@ -95,54 +93,64 @@
     }
 }
 
-#pragma mark - UIViewController
-
-- (void)viewDidLoad {
-    self.dividerView = [UIView new];
-    self.dividerView.backgroundColor = DM_SPLITVIEW_DIVIDER_COLOR;
-    self.dividerView.alpha = .8;
-    [self.view addSubview:self.dividerView];
-    self.detailTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideMaster)];
-    self.leftEdgeDetector = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(showMaster)];
-    self.leftEdgeDetector.edges = UIRectEdgeLeft;
-    self.masterCloseRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(hideMaster)];
-    self.masterCloseRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willRotate:) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
-    self.barButtonItem = [[UIBarButtonItem alloc] initWithTitle:nil style:UIBarButtonItemStylePlain target:self action:@selector(showMaster)];
-}
-
-- (void)viewDidLayoutSubviews {
-    self.dividerView.frame = [self dividerFrameFor:self.interfaceOrientation];
-    self.detailContainer.frame = [self detailFrameFor:self.interfaceOrientation];
-    self.masterContainer.frame = [self masterFrameFor:self.interfaceOrientation];
-
-    if(UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
-        [self.view addGestureRecognizer:self.leftEdgeDetector];
-    }
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:DM_SPLITVIEW_EMBED_MASTER]) {
-        self.masterController = segue.destinationViewController;
-    } else if ([segue.identifier isEqualToString:DM_SPLITVIEW_EMBED_DETAIL]) {
-        self.detailController = segue.destinationViewController;
-    }
-}
-
 - (void)willRotate:(NSNotification*)notification {
     if (![self isViewLoaded] || notification == nil) { return; }
     UIInterfaceOrientation orientation = [[notification.userInfo valueForKey:UIApplicationStatusBarOrientationUserInfoKey] intValue];
     if (UIInterfaceOrientationIsLandscape(orientation)) {
-        [self.detailContainer removeGestureRecognizer:self.detailTapRecognizer];
         [self.view removeGestureRecognizer:self.leftEdgeDetector];
         [delegate splitViewControllerWillShowMaster:self];
     }
     else {
         masterVisible = NO;
         [self.view addGestureRecognizer:self.leftEdgeDetector];
-        [delegate splitViewControllerWillHideMaster:self withBarButtonItem:(UIBarButtonItem*)self.barButtonItem];
+        [delegate splitViewControllerWillHideMaster:self withBarButtonItem:self.barButtonItem];
     }
 }
+
+#pragma mark - UIViewController
+
+- (void)viewDidLoad {
+    for(UIViewController* child in self.childViewControllers) {
+        if(child.view.superview == self.masterContainer) {
+            self.masterController = child;
+        } else if(child.view.superview == self.detailContainer) {
+            self.detailController = child;
+        }
+    }
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.dividerView = [UIView new];
+    self.dividerView.backgroundColor = DM_SPLITVIEW_DIVIDER_COLOR;
+    self.dividerView.alpha = .8;
+    [self.view addSubview:self.dividerView];
+    self.leftEdgeDetector = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(showMaster)];
+    self.leftEdgeDetector.edges = UIRectEdgeLeft;
+    self.detailOverlay = [UIView new];
+    UITapGestureRecognizer *detailTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideMaster)];
+    [self.detailOverlay addGestureRecognizer:detailTapRecognizer];
+    UISwipeGestureRecognizer* masterCloseRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(hideMaster)];
+    masterCloseRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.detailOverlay addGestureRecognizer:masterCloseRecognizer];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willRotate:) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
+    self.barButtonItem = [[UIBarButtonItem alloc] initWithTitle:nil style:UIBarButtonItemStylePlain target:self action:@selector(showMaster)];
+}
+
+- (void)viewDidLayoutSubviews {
+    NSLog(@"Layout");
+    self.dividerView.frame = [self dividerFrameFor:self.interfaceOrientation];
+    self.detailContainer.frame = [self detailFrameFor:self.interfaceOrientation];
+    self.masterContainer.frame = [self masterFrameFor:self.interfaceOrientation];
+    if(UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+        [self.view addGestureRecognizer:self.leftEdgeDetector];
+    }
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    self.detailContainer.frame = [self detailFrameFor:toInterfaceOrientation];
+}
+
+
+
 
 @end
 
