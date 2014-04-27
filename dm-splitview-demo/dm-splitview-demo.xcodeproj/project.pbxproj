@@ -7,16 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		438EC3CA739A45EE8852E821 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F41C604BEA74D488BFD0392 /* libPods.a */; };
 		88BE2301A17C711F5138E6F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88BE2C79CD432180310E1743 /* Images.xcassets */; };
-		88BE233334DF04FB81A524F9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2FCF385E8E6C52B84712 /* ViewController.m */; };
 		88BE24034FFEEFCD5F714E5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE266A321B47378402F534 /* Foundation.framework */; };
 		88BE2438A1A2133CDAEBEE51 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 88BE28DB37D433741CD4BAE0 /* InfoPlist.strings */; };
 		88BE24ADBEAD0BAC3D5713BF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE2C7FEA7510EE29C0F766 /* CoreGraphics.framework */; };
-		88BE255D506F26281DC13EF0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 88BE28DC9B79D275A17ED598 /* InfoPlist.strings */; };
-		88BE26CEFD5D6F274B10A11F /* dm_splitview_demoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE22CAE962EE6EB69CA401 /* dm_splitview_demoTests.m */; };
 		88BE29F871BFBE9D3CE91799 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE296A9414A5CCF4192A0E /* XCTest.framework */; };
 		88BE2D5A5F6852145ECD0C83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88BE216FD8A91482E3EE89AE /* Main.storyboard */; };
 		88BE2E0DCC7E746226FA342A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE24E0EE3E81BBFFABFBA6 /* UIKit.framework */; };
+		88BE2E80A05101AA1FB7DD94 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2A61BFFEFBB98C6A1402 /* DetailViewController.m */; };
 		88BE2EBEE3D47D407F772050 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE29CA58004EE16446471B /* main.m */; };
 		88BE2EE6162DC56E7DBDF95F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE266A321B47378402F534 /* Foundation.framework */; };
 		88BE2F1F10F6A6A4DDC3F19E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE24E0EE3E81BBFFABFBA6 /* UIKit.framework */; };
@@ -34,25 +33,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		88BE20283F60A3EAFB60B2B1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		0B7D42B0AE8147F1AA5E0D71 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		6F41C604BEA74D488BFD0392 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		88BE20BE397C701B15E1872B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		88BE22BB94746D1D1B4D37BB /* dm-splitview-demoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "dm-splitview-demoTests-Info.plist"; sourceTree = "<group>"; };
-		88BE22CAE962EE6EB69CA401 /* dm_splitview_demoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dm_splitview_demoTests.m; sourceTree = "<group>"; };
 		88BE23E21576D69DCF973D00 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		88BE24E0EE3E81BBFFABFBA6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		88BE266A321B47378402F534 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		88BE26D2AC67031EAC476A54 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		88BE27E0BD0C613C90C9B066 /* dm-splitview-demoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dm-splitview-demoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		88BE296A9414A5CCF4192A0E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		88BE29CA58004EE16446471B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		88BE29E1B82C2081027D4BFD /* dm-splitview-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dm-splitview-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88BE2A61BFFEFBB98C6A1402 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		88BE2AE1CB13ADB26D40AE50 /* dm-splitview-demo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dm-splitview-demo-Prefix.pch"; sourceTree = "<group>"; };
 		88BE2B67917868D03C59F7D5 /* dm-splitview-demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "dm-splitview-demo-Info.plist"; sourceTree = "<group>"; };
 		88BE2C79CD432180310E1743 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		88BE2C7FEA7510EE29C0F766 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		88BE2CD12550247FBB8031AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		88BE2E61918DC83636A8FAB9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		88BE2ECC232E28714ACE3974 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		88BE2FCF385E8E6C52B84712 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +71,7 @@
 				88BE24034FFEEFCD5F714E5D /* Foundation.framework in Frameworks */,
 				88BE24ADBEAD0BAC3D5713BF /* CoreGraphics.framework in Frameworks */,
 				88BE2E0DCC7E746226FA342A /* UIKit.framework in Frameworks */,
+				438EC3CA739A45EE8852E821 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,8 +86,8 @@
 				88BE2E61918DC83636A8FAB9 /* AppDelegate.m */,
 				88BE2C79CD432180310E1743 /* Images.xcassets */,
 				88BE216FD8A91482E3EE89AE /* Main.storyboard */,
-				88BE20283F60A3EAFB60B2B1 /* ViewController.h */,
-				88BE2FCF385E8E6C52B84712 /* ViewController.m */,
+				88BE2A61BFFEFBB98C6A1402 /* DetailViewController.m */,
+				88BE26D2AC67031EAC476A54 /* DetailViewController.h */,
 			);
 			path = "dm-splitview-demo";
 			sourceTree = "<group>";
@@ -99,17 +98,8 @@
 				88BE2F7734DB329797BDC6C9 /* Products */,
 				88BE2B556BAE146D71C1DA05 /* Frameworks */,
 				88BE22BD1567C647185E2D85 /* dm-splitview-demo */,
-				88BE2D3ECF9B7AF73AAF3BCD /* dm-splitview-demoTests */,
+				0B7D42B0AE8147F1AA5E0D71 /* Pods.xcconfig */,
 			);
-			sourceTree = "<group>";
-		};
-		88BE29C1BAEB0A5226F5F61D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				88BE22BB94746D1D1B4D37BB /* dm-splitview-demoTests-Info.plist */,
-				88BE28DC9B79D275A17ED598 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		88BE2B556BAE146D71C1DA05 /* Frameworks */ = {
@@ -119,17 +109,9 @@
 				88BE2C7FEA7510EE29C0F766 /* CoreGraphics.framework */,
 				88BE24E0EE3E81BBFFABFBA6 /* UIKit.framework */,
 				88BE296A9414A5CCF4192A0E /* XCTest.framework */,
+				6F41C604BEA74D488BFD0392 /* libPods.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		88BE2D3ECF9B7AF73AAF3BCD /* dm-splitview-demoTests */ = {
-			isa = PBXGroup;
-			children = (
-				88BE29C1BAEB0A5226F5F61D /* Supporting Files */,
-				88BE22CAE962EE6EB69CA401 /* dm_splitview_demoTests.m */,
-			);
-			path = "dm-splitview-demoTests";
 			sourceTree = "<group>";
 		};
 		88BE2DC364E49304F7F00446 /* Supporting Files */ = {
@@ -159,9 +141,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 88BE25D7DAEA221004996445 /* Build configuration list for PBXNativeTarget "dm-splitview-demo" */;
 			buildPhases = (
+				58DA2F6485704A3DADAD7D47 /* Check Pods Manifest.lock */,
 				88BE2FCEF82A668C7587AC2F /* Sources */,
 				88BE2EDDE46896FCCC438705 /* Frameworks */,
 				88BE24DAA7CD3241CB341CFF /* Resources */,
+				4BFD2BADF7BF4884BE4B78E4 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -208,6 +192,8 @@
 			mainGroup = 88BE263BDD5A00135B1232C8;
 			productRefGroup = 88BE2F7734DB329797BDC6C9 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+			);
 			projectRoot = "";
 			targets = (
 				88BE2E91238F406A6582D8A5 /* dm-splitview-demo */,
@@ -221,7 +207,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88BE255D506F26281DC13EF0 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,12 +222,44 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4BFD2BADF7BF4884BE4B78E4 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		58DA2F6485704A3DADAD7D47 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		88BE29E1384640AFE53E80B1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88BE26CEFD5D6F274B10A11F /* dm_splitview_demoTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,7 +269,7 @@
 			files = (
 				88BE2EBEE3D47D407F772050 /* main.m in Sources */,
 				88BE2FF4369A84F52F538DB8 /* AppDelegate.m in Sources */,
-				88BE233334DF04FB81A524F9 /* ViewController.m in Sources */,
+				88BE2E80A05101AA1FB7DD94 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,14 +296,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				88BE2ECC232E28714ACE3974 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		88BE28DC9B79D275A17ED598 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				88BE2CD12550247FBB8031AD /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -365,6 +374,7 @@
 		};
 		88BE26D875F6A9A617962F9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B7D42B0AE8147F1AA5E0D71 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -411,6 +421,7 @@
 		};
 		88BE2F0C21AB54E2B71DC217 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B7D42B0AE8147F1AA5E0D71 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

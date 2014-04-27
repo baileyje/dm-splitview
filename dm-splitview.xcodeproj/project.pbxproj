@@ -11,8 +11,8 @@
 		88BE235B1A288CFC192E4A55 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE25F8C4B91D4FC7D6EBC9 /* Foundation.framework */; };
 		88BE25BFB3F830949A108178 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE25F8C4B91D4FC7D6EBC9 /* Foundation.framework */; };
 		88BE28062DCAA71DB7117AAF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE22E329307C9C8E9CEF24 /* UIKit.framework */; };
-		88BE280D2C35A3DC7151780D /* DMSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2166FF0A299BF1C74017 /* DMSplitView.m */; };
-		88BE2E4356F5D9FD934844AD /* DMSplitView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 88BE294DE52135A161C7A493 /* DMSplitView.h */; };
+		88BE280D2C35A3DC7151780D /* DMSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2166FF0A299BF1C74017 /* DMSplitViewController.m */; };
+		88BE2E4356F5D9FD934844AD /* DMSplitViewController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 88BE294DE52135A161C7A493 /* DMSplitViewController.h */; };
 		88BE2FC68A40575B475755C4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE282154CA3D2641025E55 /* XCTest.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,18 +33,19 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				88BE2E4356F5D9FD934844AD /* DMSplitView.h in CopyFiles */,
+				88BE2E4356F5D9FD934844AD /* DMSplitViewController.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		88BE2166FF0A299BF1C74017 /* DMSplitView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMSplitView.m; sourceTree = "<group>"; };
+		88BE2166FF0A299BF1C74017 /* DMSplitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMSplitViewController.m; sourceTree = "<group>"; };
 		88BE22E329307C9C8E9CEF24 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		88BE25086D1EF13CF8BE1A6E /* DMSplitView.podspec */ = {isa = PBXFileReference; lastKnownFileType = file.podspec; path = DMSplitView.podspec; sourceTree = "<group>"; };
 		88BE25F8C4B91D4FC7D6EBC9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		88BE282154CA3D2641025E55 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		88BE294DE52135A161C7A493 /* DMSplitView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMSplitView.h; sourceTree = "<group>"; };
+		88BE294DE52135A161C7A493 /* DMSplitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMSplitViewController.h; sourceTree = "<group>"; };
 		88BE2984D11459DE3DCFDE89 /* DMSplitView-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DMSplitView-Prefix.pch"; sourceTree = "<group>"; };
 		88BE2B610E1F37056DDE5148 /* libDMSplitView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDMSplitView.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		88BE2EECD2EAB1078CFB55EB /* DMSplitViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DMSplitViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +90,7 @@
 				88BE297D7168AE4AFC0C7B25 /* Frameworks */,
 				88BE29B83F42049396F83FFA /* Classes */,
 				88BE2984D11459DE3DCFDE89 /* DMSplitView-Prefix.pch */,
+				88BE25086D1EF13CF8BE1A6E /* DMSplitView.podspec */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,8 +107,8 @@
 		88BE29B83F42049396F83FFA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				88BE294DE52135A161C7A493 /* DMSplitView.h */,
-				88BE2166FF0A299BF1C74017 /* DMSplitView.m */,
+				88BE294DE52135A161C7A493 /* DMSplitViewController.h */,
+				88BE2166FF0A299BF1C74017 /* DMSplitViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -197,7 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88BE280D2C35A3DC7151780D /* DMSplitView.m in Sources */,
+				88BE280D2C35A3DC7151780D /* DMSplitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
