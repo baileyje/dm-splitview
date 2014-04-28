@@ -3,8 +3,6 @@
 #define DM_SPLITVIEW_MASTER_WIDTH 320.0
 #define DM_SPLITVIEW_DIVIDER_WIDTH 1.0
 #define DM_SPLITVIEW_DIVIDER_COLOR [UIColor darkGrayColor]
-#define DM_SPLITVIEW_EMBED_MASTER @"EmbedMaster"
-#define DM_SPLITVIEW_EMBED_DETAIL @"EmbedDetail"
 
 
 @interface DMSplitViewController()
@@ -34,7 +32,7 @@
 - (CGRect)detailFrameFor:(UIInterfaceOrientation)orientation {
     CGSize fullView = self.view.bounds.size;
     if(UIInterfaceOrientationIsLandscape(orientation)) {
-        return CGRectMake(DM_SPLITVIEW_MASTER_WIDTH + 1, 0, fullView.width - DM_SPLITVIEW_MASTER_WIDTH - 1, fullView.height);
+        return CGRectMake(DM_SPLITVIEW_MASTER_WIDTH + DM_SPLITVIEW_DIVIDER_WIDTH, 0, fullView.width - DM_SPLITVIEW_MASTER_WIDTH - DM_SPLITVIEW_DIVIDER_WIDTH, fullView.height);
     } else {
         return CGRectMake(0, 0, fullView.width, fullView.height);
     }
@@ -65,7 +63,6 @@
          }
          completion:^(BOOL finished) {
              [self.view setNeedsLayout];
-
          }];
 }
 
@@ -80,7 +77,6 @@
          }
          completion:^(BOOL finished) {
              [self.view setNeedsLayout];
-
          }];
 }
 
@@ -125,17 +121,16 @@
     self.leftEdgeDetector = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(showMaster)];
     self.leftEdgeDetector.edges = UIRectEdgeLeft;
     self.detailOverlay = [UIView new];
-    UITapGestureRecognizer *detailTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideMaster)];
+    UITapGestureRecognizer* detailTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideMaster)];
     [self.detailOverlay addGestureRecognizer:detailTapRecognizer];
     UISwipeGestureRecognizer* masterCloseRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(hideMaster)];
     masterCloseRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.detailOverlay addGestureRecognizer:masterCloseRecognizer];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willRotate:) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
     self.barButtonItem = [[UIBarButtonItem alloc] initWithTitle:nil style:UIBarButtonItemStylePlain target:self action:@selector(showMaster)];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willRotate:) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
 }
 
 - (void)viewDidLayoutSubviews {
-    NSLog(@"Layout");
     self.dividerView.frame = [self dividerFrameFor:self.interfaceOrientation];
     self.detailContainer.frame = [self detailFrameFor:self.interfaceOrientation];
     self.masterContainer.frame = [self masterFrameFor:self.interfaceOrientation];
@@ -144,24 +139,16 @@
     }
 }
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
-    self.detailContainer.frame = [self detailFrameFor:toInterfaceOrientation];
-}
-
-
-
-
 @end
 
 @implementation UIViewController (DMSplitViewController)
 
 - (DMSplitViewController *)dmSplitViewController {
-    UIViewController *parentViewController = self;
+    UIViewController* parentViewController = self;
     while (parentViewController)
     {
         if ([parentViewController isKindOfClass:[DMSplitViewController class]])
-            return (DMSplitViewController *)parentViewController;
+            return (DMSplitViewController*)parentViewController;
         parentViewController = parentViewController.parentViewController;
     }
     return nil;

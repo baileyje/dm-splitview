@@ -12,6 +12,7 @@
 		88BE25BFB3F830949A108178 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE25F8C4B91D4FC7D6EBC9 /* Foundation.framework */; };
 		88BE28062DCAA71DB7117AAF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE22E329307C9C8E9CEF24 /* UIKit.framework */; };
 		88BE280D2C35A3DC7151780D /* DMSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2166FF0A299BF1C74017 /* DMSplitViewController.m */; };
+		88BE292C71FD32AC3D806145 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE22E329307C9C8E9CEF24 /* UIKit.framework */; };
 		88BE2E4356F5D9FD934844AD /* DMSplitViewController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 88BE294DE52135A161C7A493 /* DMSplitViewController.h */; };
 		88BE2FC68A40575B475755C4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE282154CA3D2641025E55 /* XCTest.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88BE235B1A288CFC192E4A55 /* Foundation.framework in Frameworks */,
+				88BE292C71FD32AC3D806145 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,7 +236,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/DMSplitView.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DMSplitView/DMSplitView-Prefix.pch";
+				GCC_PREFIX_HEADER = "DMSplitView-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -277,7 +279,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/DMSplitView.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DMSplitView/DMSplitView-Prefix.pch";
+				GCC_PREFIX_HEADER = "DMSplitView-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

@@ -1,4 +1,3 @@
-#import <Foundation/Foundation.h>
 
 @protocol DMSplitViewControllerDelegate;
 
@@ -25,7 +24,6 @@
 - (void)splitViewControllerWillHideMaster:(DMSplitViewController*)splitViewController withBarButtonItem:(UIBarButtonItem*)barButtonItem;
 
 @end
-
 
 @interface UIViewController (DMSplitViewController)
 @property (nonatomic, readonly) DMSplitViewController *dmSplitViewController;
