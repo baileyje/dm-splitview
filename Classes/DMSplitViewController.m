@@ -100,6 +100,7 @@
         masterVisible = NO;
         [self.view addGestureRecognizer:self.leftEdgeDetector];
         [delegate splitViewControllerWillHideMaster:self withBarButtonItem:self.barButtonItem];
+        [self.detailOverlay removeFromSuperview];
     }
 }
 

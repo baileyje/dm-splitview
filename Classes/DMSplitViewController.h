@@ -15,6 +15,10 @@
 
 @property (nonatomic, readonly) UIBarButtonItem* barButtonItem;
 
+- (void)showMaster;
+
+- (void)hideMaster;
+
 @end
 
 @protocol DMSplitViewControllerDelegate

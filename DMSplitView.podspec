@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   spec.name = 'DMSplitView'
-  spec.version = '0.0.2'
+  spec.version = '0.0.3'
   spec.summary = 'A modern UISplitViewController replacement.'
   spec.description = <<-DESC
     A split view controller built for iOS 7 that can be contained within other container view controllers.
