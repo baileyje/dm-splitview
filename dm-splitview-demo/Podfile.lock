@@ -1,14 +1,14 @@
 PODS:
-  - DMSplitView (0.0.1)
+  - DMSplitView (0.0.3)
 
 DEPENDENCIES:
-  - DMSplitView (from `~/dev/devmode/dm-splitview`)
+  - DMSplitView (from `..`)
 
 EXTERNAL SOURCES:
   DMSplitView:
-    :path: ~/dev/devmode/dm-splitview
+    :path: ..
 
 SPEC CHECKSUMS:
-  DMSplitView: 76b2db56e70a7a9bc200d75423c473a827d078a3
+  DMSplitView: add6984fe48228d84423fe49161d2a1c5d5cc769
 
 COCOAPODS: 0.32.1

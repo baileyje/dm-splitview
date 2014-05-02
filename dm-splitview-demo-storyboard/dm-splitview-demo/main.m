@@ -2,7 +2,7 @@
 //  main.m
 //  dm-splitview-demo
 //
-//  Created by John Bailey on 5/2/14.
+//  Created by John Bailey on 4/25/14.
 //  Copyright (c) 2014 DevMode, Inc. All rights reserved.
 //
 

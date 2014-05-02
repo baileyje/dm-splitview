@@ -1,6 +1,6 @@
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "DMSplitViewController.h"
 
+@interface DetailViewController : UIViewController <DMSplitViewControllerDelegate>
 
-@interface DetailViewController : UITableViewController <DMSplitViewControllerDelegate>
 @end

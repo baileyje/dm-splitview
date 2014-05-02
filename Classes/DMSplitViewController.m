@@ -19,6 +19,30 @@
     id<DMSplitViewControllerDelegate> delegate;
 }
 
+- (instancetype)initWithMaster:(UIViewController*)master andDetail:(UIViewController*)detail {
+    if(self = [super init]) {
+        self.masterController = master;
+        self.detailController = detail;
+        CGRect masterFrame = [self masterFrameFor:UIApplication.sharedApplication.statusBarOrientation];
+        self.masterContainer = [[UIView alloc] initWithFrame:masterFrame];
+        self.masterContainer.autoresizesSubviews = YES;
+        master.view.frame = CGRectMake(0, 0, masterFrame.size.width, masterFrame.size.height);
+        [self addChildViewController:master];
+        [master didMoveToParentViewController:self];
+        [self.masterContainer addSubview:master.view];
+        [self.view addSubview:self.masterContainer];
+        CGRect detailFrame = [self detailFrameFor:UIApplication.sharedApplication.statusBarOrientation];
+        self.detailContainer = [[UIView alloc] initWithFrame:detailFrame];
+        self.detailContainer.autoresizesSubviews = YES;
+        detail.view.frame = CGRectMake(0, 0, detailFrame.size.width, detailFrame.size.height);
+        [self addChildViewController:detail];
+        [detail didMoveToParentViewController:self];
+        [self.detailContainer addSubview:detail.view];
+        [self.view addSubview:self.detailContainer];
+    }
+    return self;
+}
+
 - (CGRect)masterFrameFor:(UIInterfaceOrientation)orientation {
     CGSize fullView = self.view.bounds.size;
     if(UIInterfaceOrientationIsLandscape(orientation)) {
@@ -108,9 +132,9 @@
 
 - (void)viewDidLoad {
     for(UIViewController* child in self.childViewControllers) {
-        if(child.view.superview == self.masterContainer) {
+        if(!self.masterController && child.view.superview == self.masterContainer) {
             self.masterController = child;
-        } else if(child.view.superview == self.detailContainer) {
+        } else if(!self.detailController && child.view.superview == self.detailContainer) {
             self.detailController = child;
         }
     }

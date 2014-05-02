@@ -15,6 +15,8 @@
 
 @property (nonatomic, readonly) UIBarButtonItem* barButtonItem;
 
+- (instancetype)initWithMaster:(UIViewController*)master andDetail:(UIViewController*)detail;
+
 - (void)showMaster;
 
 - (void)hideMaster;
