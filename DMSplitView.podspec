@@ -11,7 +11,7 @@ Pod::Spec.new do |spec|
 
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  spec.license = 'MIT'
+  spec.license = { :type => 'MIT', :file =>  'LICENSE-MIT' }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -27,7 +27,7 @@ Pod::Spec.new do |spec|
 
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  spec.source = { git: 'https://github.com/devmode/dm-splitview.git', tag: spec.version }
+  spec.source = { :git => 'https://github.com/devmode/dm-splitview.git', :tag => spec.version }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
