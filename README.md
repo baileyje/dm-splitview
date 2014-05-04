@@ -10,4 +10,4 @@ it simply add the following line to your Podfile:
 DMRequest is available under the MIT license. See the LICENSE file for more info.
 
 
-Documentation is available [here](http://devmode.com/projects/dm-splitview).
+Documentation is available [here](http://devmode.com/projects/dm-split-view).
