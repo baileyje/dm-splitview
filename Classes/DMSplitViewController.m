@@ -45,7 +45,7 @@
 
 - (CGRect)masterFrameFor:(UIInterfaceOrientation)orientation {
     CGSize fullView = self.view.bounds.size;
-    if(UIInterfaceOrientationIsLandscape(orientation)) {
+    if(UIInterfaceOrientationIsLandscape(orientation) || self.shouldShowMasterInPortrait) {
         return CGRectMake(0, 0, DM_SPLITVIEW_MASTER_WIDTH, fullView.height);
     } else {
         CGFloat offset = masterVisible ? 0 : -DM_SPLITVIEW_MASTER_WIDTH;
@@ -55,7 +55,7 @@
 
 - (CGRect)detailFrameFor:(UIInterfaceOrientation)orientation {
     CGSize fullView = self.view.bounds.size;
-    if(UIInterfaceOrientationIsLandscape(orientation)) {
+    if(UIInterfaceOrientationIsLandscape(orientation) || self.shouldShowMasterInPortrait) {
         return CGRectMake(DM_SPLITVIEW_MASTER_WIDTH + DM_SPLITVIEW_DIVIDER_WIDTH, 0, fullView.width - DM_SPLITVIEW_MASTER_WIDTH - DM_SPLITVIEW_DIVIDER_WIDTH, fullView.height);
     } else {
         return CGRectMake(0, 0, fullView.width, fullView.height);
@@ -64,7 +64,7 @@
 
 - (CGRect)dividerFrameFor:(UIInterfaceOrientation)orientation {
     CGSize fullView = self.view.bounds.size;
-    if(UIInterfaceOrientationIsLandscape(orientation)) {
+    if(UIInterfaceOrientationIsLandscape(orientation) || self.shouldShowMasterInPortrait) {
         return CGRectMake(DM_SPLITVIEW_MASTER_WIDTH, 0, DM_SPLITVIEW_DIVIDER_WIDTH, fullView.height);
     } else {
         CGFloat offset = masterVisible ? DM_SPLITVIEW_MASTER_WIDTH : -DM_SPLITVIEW_DIVIDER_WIDTH;
@@ -114,7 +114,7 @@
 }
 
 - (void)willRotate:(NSNotification*)notification {
-    if (![self isViewLoaded] || notification == nil) { return; }
+    if (![self isViewLoaded] || notification == nil || self.shouldShowMasterInPortrait) { return; }
     UIInterfaceOrientation orientation = [[notification.userInfo valueForKey:UIApplicationStatusBarOrientationUserInfoKey] intValue];
     if (UIInterfaceOrientationIsLandscape(orientation)) {
         [self.view removeGestureRecognizer:self.leftEdgeDetector];

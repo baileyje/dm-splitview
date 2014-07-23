@@ -15,6 +15,8 @@
 
 @property (nonatomic, readonly) UIBarButtonItem* barButtonItem;
 
+@property (nonatomic) BOOL shouldShowMasterInPortrait;
+
 - (instancetype)initWithMaster:(UIViewController*)master andDetail:(UIViewController*)detail;
 
 - (void)showMaster;
