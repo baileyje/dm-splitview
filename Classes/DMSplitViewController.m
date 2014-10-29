@@ -156,9 +156,9 @@
 }
 
 - (void)viewDidLayoutSubviews {
-    self.dividerView.frame = [self dividerFrameFor:self.interfaceOrientation];
-    self.detailContainer.frame = [self detailFrameFor:self.interfaceOrientation];
-    self.masterContainer.frame = [self masterFrameFor:self.interfaceOrientation];
+    self.dividerView.frame = [self dividerFrameFor:UIApplication.sharedApplication.statusBarOrientation];
+    self.detailContainer.frame = [self detailFrameFor:UIApplication.sharedApplication.statusBarOrientation];
+    self.masterContainer.frame = [self masterFrameFor:UIApplication.sharedApplication.statusBarOrientation];
     if(UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
         [self.view addGestureRecognizer:self.leftEdgeDetector];
     }
