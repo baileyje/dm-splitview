@@ -77,7 +77,9 @@
     masterVisible = YES;
     [self.view bringSubviewToFront:self.masterContainer];
     [self.view bringSubviewToFront:self.dividerView];
-    [self.view removeGestureRecognizer:self.leftEdgeDetector];
+    if (self.leftEdgeDetector) {
+        [self.view removeGestureRecognizer:self.leftEdgeDetector];
+    }
     [self.view insertSubview:self.detailOverlay belowSubview:self.masterContainer];
     self.detailOverlay.frame = [self detailFrameFor:self.interfaceOrientation];
     [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionBeginFromCurrentState
@@ -92,7 +94,9 @@
 
 - (void)hideMaster {
     masterVisible = NO;
-    [self.view addGestureRecognizer:self.leftEdgeDetector];
+    if (self.leftEdgeDetector) {
+        [self.view addGestureRecognizer:self.leftEdgeDetector];
+    }
     [self.detailOverlay removeFromSuperview];
     [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionBeginFromCurrentState
          animations:^{
@@ -117,12 +121,16 @@
     if (![self isViewLoaded] || notification == nil) { return; }
     UIInterfaceOrientation orientation = [[notification.userInfo valueForKey:UIApplicationStatusBarOrientationUserInfoKey] intValue];
     if (UIInterfaceOrientationIsLandscape(orientation)) {
-        [self.view removeGestureRecognizer:self.leftEdgeDetector];
+        if (self.leftEdgeDetector) {
+            [self.view removeGestureRecognizer:self.leftEdgeDetector];
+        }
         [delegate splitViewControllerWillShowMaster:self];
     }
     else {
         masterVisible = NO;
-        [self.view addGestureRecognizer:self.leftEdgeDetector];
+        if (self.leftEdgeDetector) {
+            [self.view addGestureRecognizer:self.leftEdgeDetector];
+        }
         [delegate splitViewControllerWillHideMaster:self withBarButtonItem:self.barButtonItem];
         [self.detailOverlay removeFromSuperview];
     }
@@ -160,7 +168,9 @@
     self.detailContainer.frame = [self detailFrameFor:UIApplication.sharedApplication.statusBarOrientation];
     self.masterContainer.frame = [self masterFrameFor:UIApplication.sharedApplication.statusBarOrientation];
     if(UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
-        [self.view addGestureRecognizer:self.leftEdgeDetector];
+        if (self.leftEdgeDetector) {
+            [self.view addGestureRecognizer:self.leftEdgeDetector];
+        }
     }
 }
 
